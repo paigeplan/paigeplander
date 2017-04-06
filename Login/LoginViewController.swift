@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
         loginButton.centerXAnchor.constraint(equalTo: loginWrapperView.centerXAnchor).isActive = true
         loginButton.bottomAnchor.constraint(equalTo: loginWrapperView.bottomAnchor, constant: -Constants.verticalSpacing).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
-        loginButton.widthAnchor.constraint(equalTo: loginWrapperView.widthAnchor, multiplier: 0.25).isActive = true
+        loginButton.widthAnchor.constraint(equalTo: loginWrapperView.widthAnchor, multiplier: 0.60).isActive = true
 
         // Constraints password text field
         passwordField.leadingAnchor.constraint(equalTo: loginWrapperView.leadingAnchor, constant: Constants.textFieldMargin).isActive = true
