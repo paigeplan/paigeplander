@@ -124,7 +124,6 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        CGRect(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat)
     }
     
     
