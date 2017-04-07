@@ -22,8 +22,6 @@ class LoginViewController: UIViewController {
         static let buttonCornerRadius: CGFloat = 10
         static let labelTextSize: CGFloat = 50
     }
-
-    let loginModel = LoginModel(filename: "Lab6Names")
     
     var loginButton: UIButton = {
         var button = UIButton()
@@ -127,6 +125,16 @@ class LoginViewController: UIViewController {
     }
     
     
+    
+    /// YOU DO NOT NEED TO MODIFY ANY OF THE CODE BELOW (but you will want to use `authenticateUser` at some point)
+    
+    // Model class to handle checking if username/password combinations are valid
+    // usernames and passwords can be found in the Lab6Names.csv file
+    let loginModel = LoginModel(filename: "Lab6Names")
+    
+    /// imageview for login success image (do not need to modify)
+    let loginSuccessView = UIImageView(image: UIImage(named: "oski"))
+    
     /// Displays an alert indicating whether or not the login was successful
     /// You do not need to edit this function, but you will want to use it for the lab.
     ///
@@ -134,15 +142,30 @@ class LoginViewController: UIViewController {
     ///   - username: the user's berkeley.edu address
     ///   - password: the user's first name (what a great password!)
     func authenticateUser(username: String?, password: String?) {
+        
+        // if username / password combination is invalid, display an alert
         if !loginModel.authenticate(username: username, password: password) {
+            loginSuccessView.isHidden = true
             let alert = UIAlertController(title: Constants.invalidEmailTitle, message: Constants.invalidEmailMessage, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+            
+            // if username / password combination is valid, display success image
         else {
-            // TODO paige: update this to display a view
-            print("logged in")
+            
+            if !loginSuccessView.isDescendant(of: view) {
+                view.addSubview(loginSuccessView)
+                loginSuccessView.contentMode = .scaleAspectFill
+            }
+            loginSuccessView.isHidden = false
+            
+            // constraints for the login success view
+            loginSuccessView.translatesAutoresizingMaskIntoConstraints = false
+            loginSuccessView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            loginSuccessView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            loginSuccessView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            loginSuccessView.heightAnchor.constraint(equalToConstant: view.frame.height/4).isActive = true
         }
     }
 }
-
